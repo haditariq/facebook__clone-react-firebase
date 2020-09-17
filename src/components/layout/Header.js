@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from '@material-ui/core';
 
 // assets
-import "../../assets/css/Header.css"
+import "../../assets/css/header.css"
 import facebookIcon from '../../assets/icons/facebook.png'
 import SearchIcon from '@material-ui/icons/Search';
 import HomeIcon from '@material-ui/icons/Home';
