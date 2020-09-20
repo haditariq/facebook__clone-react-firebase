@@ -4,11 +4,12 @@ import StoryReel from "./StoryReel";
 import MessageSender from "./MessageSender";
 import Post from "./Post";
 import db from "../config/firebase";
+
 function Feed() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    db.collection("posts").onSnapshot(snapshot => {
+    db.collection("posts").orderBy("timestamp", "desc").onSnapshot(snapshot => {
       setPosts(snapshot.docs.map((doc) => ({id: doc.id, data: doc.data()})))
       }
     );

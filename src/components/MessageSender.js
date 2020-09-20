@@ -4,17 +4,28 @@ import Avatar from "@material-ui/core/Avatar";
 import VideocamIcon from "@material-ui/icons/Videocam";
 import PhotoLibraryIcon from "@material-ui/icons/PhotoLibrary";
 import EmojiEmotionsIcon from "@material-ui/icons/EmojiEmotions";
-import {useStateValue} from '../dataLayer/Provider';
+import { useStateValue } from "../dataLayer/Provider";
+import db from "../config/firebase";
+import firebase from "firebase";
 
 function MessageSender(props) {
   const [input, setInput] = useState("");
   const [imageUrl, setImageURl] = useState("");
-  const [{user}, dispatch] = useStateValue();
+  const [{ user }, dispatch] = useStateValue();
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    setImageURl("")
-    setInput("")
+    let addPost = db.collection("posts").add({
+      message: input,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+      profilePic: user.photoURL,
+      username: user.displayName,
+      image: imageUrl
+    });
+
+    console.log(addPost)
+    setImageURl("");
+    setInput("");
   };
 
   return (
