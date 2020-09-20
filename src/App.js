@@ -1,21 +1,29 @@
-import React from 'react';
-import './App.css';
-import Header from './components/layout/Header';
-import Sidebar from './components/layout/Sidebar';
-import Feed from './components/Feed';
+import React from "react";
+import "./App.css";
+import Header from "./components/layout/Header";
+import Sidebar from "./components/layout/Sidebar";
+import Feed from "./components/Feed";
+import Widgets from "./components/Widgets";
+import Login from './components/Login';
+import {useStateValue} from './dataLayer/Provider';
 
 function App() {
+  const [{user}, dispatch] = useStateValue();
   return (
     <div className="app">
-      <Header/>
+      {!user ? (
+        <Login />
+      ) : (
+        <>
+          <Header />
 
-      <div className="app__body">
-        <Sidebar/>
-        <Feed/>
-        <Sidebar/>
-
-        {/*Widgets*/}
-      </div>
+          <div className="app__body">
+            <Sidebar />
+            <Feed />
+            <Widgets />
+          </div>
+        </>
+      )}
     </div>
   );
 }

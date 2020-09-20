@@ -1,28 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import "../assets/css/messageSender.css";
 import Avatar from "@material-ui/core/Avatar";
-import VideocamIcon from '@material-ui/icons/Videocam';
-import PhotoLibraryIcon from '@material-ui/icons/PhotoLibrary';
-import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
+import VideocamIcon from "@material-ui/icons/Videocam";
+import PhotoLibraryIcon from "@material-ui/icons/PhotoLibrary";
+import EmojiEmotionsIcon from "@material-ui/icons/EmojiEmotions";
+import {useStateValue} from '../dataLayer/Provider';
 
 function MessageSender(props) {
+  const [input, setInput] = useState("");
+  const [imageUrl, setImageURl] = useState("");
+  const [{user}, dispatch] = useStateValue();
 
   const handleSubmit = e => {
     e.preventDefault();
-    alert("click")
+    setImageURl("")
+    setInput("")
   };
 
   return (
     <div className={"messageSender"}>
       <div className="messageSender__top">
-        <Avatar />
+        <Avatar src={user.photoURL} />
         <form action="">
           <input
+            value={input}
             type="text"
-            placeholder={"What's on your mind"}
+            placeholder={`What's on your mind, ${user.displayName}?`}
             className={"messageSender__input"}
+            onChange={e => setInput(e.target.value)}
           />
-          <input type="text" placeholder={"image URL (Optional)"} />
+          <input
+            value={imageUrl}
+            type="text"
+            placeholder={"image URL (Optional)"}
+            onChange={e => setImageURl(e.target.value)}
+          />
           <button onClick={handleSubmit} type={"submit"}>
             Hidden submit
           </button>
@@ -31,17 +43,17 @@ function MessageSender(props) {
 
       <div className="messageSender__bottom">
         <div className="messageSender__option">
-          <VideocamIcon style={{color:"red"}}/>
+          <VideocamIcon style={{ color: "red" }} />
           <h3>Live video</h3>
         </div>
 
         <div className="messageSender__option">
-          <PhotoLibraryIcon style={{color:"green"}}/>
+          <PhotoLibraryIcon style={{ color: "green" }} />
           <h3>Photo/Video</h3>
         </div>
 
         <div className="messageSender__option">
-          <EmojiEmotionsIcon style={{color:"orange"}}/>
+          <EmojiEmotionsIcon style={{ color: "orange" }} />
           <h3>Feeling/Activity</h3>
         </div>
       </div>
