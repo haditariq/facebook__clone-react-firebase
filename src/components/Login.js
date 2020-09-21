@@ -16,6 +16,8 @@ function Login(props) {
     auth
       .signInWithPopup(provider)
       .then(result => {
+        console.log(result.user)
+
         dispatch({
           type: actionTypes.SET_USER,
           payload: result.user

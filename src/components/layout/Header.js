@@ -62,7 +62,7 @@ function Header (props) {
           <NotificationsActiveIcon/>
         </IconButton>
         <IconButton>
-          <ExpandMoreIcon/>
+          <ExpandMoreIcon className={"header__expandMore"}/>
         </IconButton>
 
       </div>

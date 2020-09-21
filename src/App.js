@@ -4,11 +4,11 @@ import Header from "./components/layout/Header";
 import Sidebar from "./components/layout/Sidebar";
 import Feed from "./components/Feed";
 import Widgets from "./components/Widgets";
-import Login from './components/Login';
-import {useStateValue} from './dataLayer/Provider';
+import Login from "./components/Login";
+import { useStateValue } from "./dataLayer/Provider";
 
 function App() {
-  const [{user}, dispatch] = useStateValue();
+  const [{ user }, dispatch] = useStateValue();
   return (
     <div className="app">
       {!user ? (
@@ -16,10 +16,11 @@ function App() {
       ) : (
         <>
           <Header />
-
           <div className="app__body">
             <Sidebar />
-            <Feed />
+            <div className={"app__feedContainer"} >
+              <Feed />
+            </div>
             <Widgets />
           </div>
         </>

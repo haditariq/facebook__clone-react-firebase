@@ -1,8 +1,20 @@
 .feed{
-  flex: 1;
-  padding: 30px 100px;
+  padding: 30px 0px;
+  width: 80%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  
+}
+
+@media only screen and (min-width: 1024px) {
+  .header__expandMore{
+    display: none !important;
+  }
+  
+  .feed{
+    /*width: 70%;*/
+  }
+  
 }
