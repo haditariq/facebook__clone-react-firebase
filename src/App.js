@@ -9,7 +9,7 @@ import { useStateValue } from "./dataLayer/Provider";
 
 function App() {
   const [{ user }, dispatch] = useStateValue();
-  const [showSide, setSideBar] = useState(false);
+  const [showSide, setSideBar] = useState(true);
 
   const showSideBar = e => {
     setSideBar(e);
@@ -30,9 +30,7 @@ function App() {
             <div className={"app__feedContainer"}>
               <Feed />
             </div>
-            <div className={"app__widgets"}>
             <Widgets />
-            </div>
           </div>
         </>
       )}
