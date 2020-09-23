@@ -13,7 +13,13 @@
 
 @media only screen and (max-width: 1024px) {
   .app__sidebarContainer{
-    display: none;
+    /*display: none;*/
   }
 }
+
+/*@media only screen and (max-width: 768px) {*/
+/*  .app__widgets{*/
+/*    display: none;*/
+/*  }*/
+/*}*/
 

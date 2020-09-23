@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Header from "./components/layout/Header";
 import Sidebar from "./components/layout/Sidebar";
@@ -9,21 +9,30 @@ import { useStateValue } from "./dataLayer/Provider";
 
 function App() {
   const [{ user }, dispatch] = useStateValue();
+  const [showSide, setSideBar] = useState(false);
+
+  const showSideBar = e => {
+    setSideBar(e);
+  };
   return (
     <div className="app">
       {!user ? (
         <Login />
       ) : (
         <>
-          <Header />
+          <Header showSidebar={e => showSideBar(e)} />
           <div className="app__body">
-            <div className="app__sidebarContainer">
-              <Sidebar />
-            </div>
-            <div className={"app__feedContainer"} >
+            {showSide && (
+              <div className="app__sidebarContainer">
+                <Sidebar />
+              </div>
+            )}
+            <div className={"app__feedContainer"}>
               <Feed />
             </div>
+            <div className={"app__widgets"}>
             <Widgets />
+            </div>
           </div>
         </>
       )}
