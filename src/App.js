@@ -17,7 +17,9 @@ function App() {
         <>
           <Header />
           <div className="app__body">
-            <Sidebar />
+            <div className="app__sidebarContainer">
+              <Sidebar />
+            </div>
             <div className={"app__feedContainer"} >
               <Feed />
             </div>

@@ -10,3 +10,10 @@
   flex: 1;
   justify-content: center;
 }
+
+@media only screen and (max-width: 1024px) {
+  .app__sidebarContainer{
+    display: none;
+  }
+}
+

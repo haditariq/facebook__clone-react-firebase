@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button } from '@material-ui/core';
 
 // assets
 import "../../assets/css/header.css"
@@ -17,7 +16,7 @@ import ForumIcon from '@material-ui/icons/Forum';
 import NotificationsActiveIcon from '@material-ui/icons/NotificationsActive';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import {useStateValue} from '../../dataLayer/Provider';
-
+import MenuIcon from '@material-ui/icons/Menu';
 
 function Header (props) {
   const [{user}, dispatch] = useStateValue();
@@ -29,6 +28,9 @@ function Header (props) {
           <SearchIcon/>
           <input type="text" placeholder={"Search Facebook"}/>
         </div>
+        <IconButton onClick={() => { alert('clicked') }}>
+        <MenuIcon className={"header__leftHamburg"}/>
+        </IconButton>
       </div>
       <div className="header__center">
         <div className="header__option header__option--active">
@@ -47,6 +49,10 @@ function Header (props) {
           <SupervisedUserCircleIcon fontSize={"large"}/>
         </div>
       </div>
+
+
+      <div className={"check"}>df</div>
+
       <div className="header__right">
         <div className="header__info">
           <Avatar src={user.photoURL}/>
@@ -60,9 +66,6 @@ function Header (props) {
         </IconButton>
         <IconButton>
           <NotificationsActiveIcon/>
-        </IconButton>
-        <IconButton>
-          <ExpandMoreIcon className={"header__expandMore"}/>
         </IconButton>
 
       </div>
